@@ -1,0 +1,5 @@
+name: ToxicRain
+main: me.devtrojan.toxicrain.ToxicRainPlugin
+version: 1.0
+description: Makes the zombies go CRAZY while raining.
+author: DEV_TROJAN

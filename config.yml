@@ -1,0 +1,6 @@
+world-name: "world"
+######################
+zombie-effect: SPEED 99999 1
+min-rain-time: 60
+max-rain-time: 300
+   
