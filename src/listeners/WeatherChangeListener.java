@@ -22,7 +22,6 @@ public class WeatherChangeListener implements Listener{
 			
 			plugin.isRaining = e.toWeatherState();
 			
-			
 			if(plugin.isRaining) {
 				changingWeather = true;
 				cw.CustomStorm();

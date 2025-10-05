@@ -23,11 +23,16 @@ public class ToxicRainPlugin extends JavaPlugin{
 		saveDefaultConfig();
 		config = getConfig();
 		GetEffectFromConfig();
-		try {
-			dworld = Bukkit.getWorld(config.getString("world-name"));
-		} catch (Exception e){
-			System.out.println("The world you have put in the config file does NOT exist!");
-		}
+		
+		//Checking if the world exists so there are no null exceptions.
+		dworld = Bukkit.getWorld(config.getString("world-name"));
+		
+	    if (dworld == null) {
+	        getLogger().severe("The world '" + config.getString("world-name") + "' does NOT exist! Disabling plugin.");
+	        getServer().getPluginManager().disablePlugin(this);
+	        return;
+	    }
+		
 		isRaining = Bukkit.getWorld(config.getString("world-name")).hasStorm();
 		getServer().getPluginManager().registerEvents(new ZombieSpawnEvent(), this);
 		getServer().getPluginManager().registerEvents(new WeatherChangeListener(), this);
