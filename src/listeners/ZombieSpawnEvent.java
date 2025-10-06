@@ -1,5 +1,6 @@
 package listeners;
 
+import org.bukkit.entity.Ageable;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,8 +18,11 @@ public class ZombieSpawnEvent implements Listener{
 	@EventHandler
 	public void onZombieSpawn(CreatureSpawnEvent e) {
 		if(e.getEntity() instanceof Zombie) {
+			Ageable babyZ = (Ageable)e.getEntity();
 			if(plugin.isRaining) {
-				entityEvents.StartEvent(e.getEntity());
+				if(e.getEntity() != babyZ) {
+					entityEvents.StartEvent(e.getEntity());
+				}
 			}
 		}
 	}
