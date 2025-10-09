@@ -5,6 +5,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import customevents.ChangeHologramText;
 import customevents.CustomWeather;
 import me.devtrojan.toxicrain.ToxicRainPlugin;
 
@@ -13,6 +14,7 @@ public class WeatherChangeListener implements Listener{
 	private final ToxicRainPlugin plugin = JavaPlugin.getPlugin(ToxicRainPlugin.class);
 	private CustomWeather cw = new CustomWeather();
 	private boolean changingWeather = false;
+	private ChangeHologramText cht = new ChangeHologramText();
 	
 	@EventHandler
 	public void onWeatherChange(WeatherChangeEvent e) {
@@ -25,7 +27,10 @@ public class WeatherChangeListener implements Listener{
 			if(plugin.isRaining) {
 				changingWeather = true;
 				cw.CustomStorm();
+				cht.ChangeText(plugin.isRaining);
 				changingWeather = false;
+			} else {
+				cht.ChangeText(plugin.isRaining);
 			}
 		}
 	}
